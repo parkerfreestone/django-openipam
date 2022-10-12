@@ -66,30 +66,6 @@ class DashboardView(TemplateView):
         return context
 
 
-class LeaseUsageView(TemplateView):
-    template_name = "report/lease_usage.html"
-
-
-class WeatherMapView(TemplateView):
-    template_name = "report/weather_map.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(WeatherMapView, self).get_context_data(**kwargs)
-        popup = self.request.GET.get("_popup", None)
-        context["is_popup"] = True if popup else False
-        return context
-
-
-class BuildingMapView(TemplateView):
-    template_name = "report/building_map.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(BuildingMapView, self).get_context_data(**kwargs)
-        popup = self.request.GET.get("_popup", None)
-        context["is_popup"] = True if popup else False
-        return context
-
-
 class DisabledHostsView(GroupRequiredMixin, TemplateView):
     group_required = "ipam_admins"
     template_name = "report/disabled.html"
